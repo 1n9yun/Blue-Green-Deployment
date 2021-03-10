@@ -5,8 +5,8 @@ services:
     build:
         context: .
         dockerfile: Dockerfile_nginx
-    image: web_project/nginx:0.1
+    image: nginx
     ports:
       - 8084:8084
-    container_name: nginx_web_project
+    container_name: test-nginx
     network_mode: "host"

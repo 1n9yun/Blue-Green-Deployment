@@ -22,6 +22,8 @@ RUN mvn package
 #COPY --from=build ${DEPENDENCY}/META-INF /backend/META-INF
 #COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /backend
 
+RUN echo hello
+
 FROM openjdk:11
 
 COPY --from=build /app/target/api-server-0.0.1-SNAPSHOT.jar .

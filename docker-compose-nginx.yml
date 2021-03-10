@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+        context: .
+        dockerfile: Dockerfile_nginx
+    image: web_project/nginx:0.1
+    ports:
+      - 8084:8084
+    container_name: nginx_web_project
+    network_mode: "host"

@@ -1,4 +1,4 @@
-apt-get update && apt-get install \
+apt-get update && apt-get -y install \
     apt-transport-https \
     ca-certificates \
     curl \
@@ -9,4 +9,4 @@ add-apt-repository \
    $(lsb_release -cs) \
    stable" && \
 apt-get update && \
-apt-get update && apt-get install docker-ce
+apt-get update && apt-get -y install docker-ce

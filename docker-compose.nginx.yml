@@ -4,6 +4,6 @@ services:
   nginx:
     build: ./
     ports:
-      - 8084:8084
+      - 80:80
     container_name: test-nginx
     network_mode: "host"

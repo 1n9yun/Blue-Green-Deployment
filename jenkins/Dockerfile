@@ -6,7 +6,10 @@ USER root
 COPY docker-install.sh /docker-install.sh 
 RUN chmod +x /docker-install.sh 
 RUN /docker-install.sh 
-RUN usermod -aG docker jenkins 
+
+RUN usermod -aG docker jenkins
+
+
 USER jenkins
 
 EXPOSE 8080

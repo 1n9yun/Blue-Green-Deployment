@@ -9,6 +9,7 @@ Example of Blue-Green Deployment with Docker, Nginx, Jenkins
 |nginx|80:80|nginx:latest|
 |api-server_blue|8081:8080|./api-server|
 |api-server_green|8082:8080|./api-server|
+|jenkins|8080:8080|jenkins/jenkins|
 
 ## nginx Configuration
 
@@ -89,3 +90,26 @@ public class VersionController {
 
 }
 ```
+
+### Result
+
+![result](https://user-images.githubusercontent.com/38209225/110757175-6f58f580-828e-11eb-8cb8-dc6eff5aa6d3.png)
+
+작아서 잘 안보이지만.. 22222222~ 23232323~ 33333333~으로 출력되는 모습이다.
+
+22222222~ `Blue`만 실행 중  
+(서버 버전 수정 후 `push`, 빌드 후 `Green`서버 배포)  
+23232323~ `Blue, Green` 실행 중, 로드밸런싱  
+33333333~ `Blue`서버 down, `Green`만 실행 중
+
+## Todo
+
+### Load-Balancing
+
+* Health-Check
+    * 오픈소스버전 nginx는 이 기능을 지원하지 않는다.
+        * nginx plus 사용하기 (유료)
+        * nginx_upstream_check_module 패치
+            * https://m.blog.naver.com/sehyunfa/221707853050
+* `Green`서버가 배포되면 바로 `Blue`서버를 로드밸런싱에서 제외해야 함
+    * 버전이 왔다갔다 하면 안될 것 같음
